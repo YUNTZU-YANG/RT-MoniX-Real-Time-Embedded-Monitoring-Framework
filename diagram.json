@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "LDR Test",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -150.4,
+      "left": -200.8,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -153.3,
+      "left": -235.8,
+      "attrs": { "temperature": "57.9", "humidity": "68.5" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "v63.7", "h103.91" ] ],
+    [ "ldr1:GND", "esp:GND", "black", [ "h0" ] ],
+    [ "ldr1:AO", "esp:VP", "green", [ "v82.9", "h133.41" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v67.2", "h225.41" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
